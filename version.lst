@@ -1,0 +1,7 @@
+2024/12/20
+ver.1.51
+made a date checking function that checks if the program has been run in the last five days
+reordered code for sanity/readablility
+some basic code cleanup
+TO DO -
+    CHECK IF THE FEED LIST HAS BEEN UPDATED. IF SO, FORCE UPDATE
