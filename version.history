@@ -1,41 +1,35 @@
 2024/12/17
-ver0.01
-learned how to use python for the first time
-2024/12/17
-ver.0.1
-successfully fetches a single feed
-2024/12/17
 ver.1
+learned how to use python for the first time
+successfully fetches a single feed
 successfully fetches multiple feeds
-2024/12/17
-ver.1.2
 successfully performes checking to ensure only original feed entries are collected
-TO DO -
-    MAKE A CODEX FILE
-    SEE ABOUT PERFORANCE IMPORVEMENTS WITH OTHER ARRAY TYPES
-2024/12/17
-ver.1.21
 improved performance with sets
 made a codex file
 TO DO -
     HAVE ANY NEW ENTRIES ENTERED INTO THE CODEX FILE
     ENSURE THE PROGRAM IS ONLY RUN EVERY FIVE DAYS TO REDUCE NETWORK TRAFFIC
 2024/12/18
-ver.1.22
+ver.1.11
 fixed implementation of the codex file so it now properly utilizes both codex and links
 TO DO -
     ENSURE THE PROGRAM IS ONLY RUN EVERY FIVE DAYS TO REDUCE NETWORK TRAFFIC
     AS ABOVE, CHECK IF THE FEED LIST HAS BEEN UPDATED. IF SO, FORCE UPDATE
 2024/12/20
-ver.1.23
-changed getting links to getting hash values
-TO DO -
-    ENSURE THE PROGRAM IS ONLY RUN EVERY FIVE DAYS TO REDUCE NETWORK TRAFFIC
-    AS ABOVE, CHECK IF THE FEED LIST HAS BEEN UPDATED. IF SO, FORCE UPDATE
-2024/12/20
-ver.1.30
+ver.1.12
 added getting links in addition to hash values
 removed the necessity for a separarate hashes and links file by the use of sets
+made a date checking function [check-date] that checks if the program has been run in the last five days
+reordered code for readablility
+general code cleanup
+updated program to run using relative paths
 TO DO -
-    ENSURE THE PROGRAM IS ONLY RUN EVERY FIVE DAYS TO REDUCE NETWORK TRAFFIC
-    AS ABOVE, CHECK IF THE FEED LIST HAS BEEN UPDATED. IF SO, FORCE UPDATE
+    CHECK IF THE FEED LIST HAS BEEN UPDATED. IF SO, FORCE UPDATE
+2024/12/23
+ver.1.2
+made program fail if no feeds are specified in feeds.lst
+function creation for system exit [critfail]
+function creation for file checking [checkfiles]
+general code cleanup
+removed the necessity for regex and type conversion in the [checkdate] function
+added a force option to [checkdate] function
