@@ -77,7 +77,7 @@ if ((read-date) -eq 'run' -OR (read-modtime) -eq 'force' ) {
     [string[]]$files = @(Get-ChildItem -File -Filter '*.torrent')
     [string]$file = ''
     foreach ($file in $files) {
-        Move-Item $file torrents\ -Force
+        Move-Item $file downloads\torrents\ -Force
     }
 }
 else {

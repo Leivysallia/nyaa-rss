@@ -1,9 +1,6 @@
-2024/12/17
-ver.1.21
-improved performance with sets
-made a codex file
+2024/12/18
+ver.1.22
+fixed implementation of the codex file so it now properly utilizes both codex and links
 TO DO -
-    HAVE ANY NEW ENTRIES ENTERED INTO THE CODEX FILE
     ENSURE THE PROGRAM IS ONLY RUN EVERY FIVE DAYS TO REDUCE NETWORK TRAFFIC
-
-    
+    AS ABOVE, CHECK IF THE FEED LIST HAS BEEN UPDATED. IF SO, FORCE UPDATE ANYWAY
