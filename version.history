@@ -1,0 +1,23 @@
+2024/12/17
+alpha testing
+learned how to use python for the first time
+2024/12/17
+ver.0.05
+successfully fetches a single feed
+2024/12/17
+ver.1
+successfully fetches multiple feeds
+2024/12/17
+ver.1.2
+successfully performes checking to ensure only original feed entries are collected
+TO DO -
+    MAKE A CODEX FILE
+    SEE ABOUT PERFORANCE IMPORVEMENTS WITH OTHER ARRAY TYPES
+2024/12/17
+ver.1.21
+improved performance with sets
+made a codex file
+TO DO -
+    HAVE ANY NEW ENTRIES ENTERED INTO THE CODEX FILE
+    ENSURE THE PROGRAM IS ONLY RUN EVERY FIVE DAYS TO REDUCE NETWORK TRAFFIC
+
