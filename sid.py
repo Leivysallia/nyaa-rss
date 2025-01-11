@@ -1,6 +1,6 @@
-import atexit, datetime, os, re, requests, sys
 from datetime import timedelta
 from os.path import expanduser
+import atexit, datetime, os, re, requests, sys
 
 def debug():
     atexit.register(lambda: input("Press Enter To Quit."))
@@ -53,7 +53,7 @@ def check_date():
     curr = curr.strftime('%Y%m%d')
     prev = str(open(prevlst).read().split())
     calc = datetime.datetime.strptime(prev, "['%Y%m%d']")
-    calc = calc + timedelta(days = 5)
+    calc = calc + datetime.timedelta(days = 5)
     calc = calc.strftime('%Y%m%d')
     if curr >= calc:
         log = open(prevlst, 'w')
