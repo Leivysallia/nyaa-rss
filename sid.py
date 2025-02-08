@@ -14,14 +14,14 @@ def file_not_found():
 def check_files():
     if not os.path.exists(codexlst):
         file = open(codexlst, 'w')
-        file.close
+        file.close()
     if not os.path.exists(prevlst):
         file = open(prevlst, 'w')
         print('19700101', file=file)
         file.close()
     if not os.path.exists(feedslst):
         file = open(feedslst, 'w')
-        file.close
+        file.close()
         print('there are no feeds specified in feeds.lst\nplease find the feeds.lst in ' + feedslst + '\nremember that the only feeds that are currently supported are ones from sukebei.nyaa.si and nyaa.si\nthank you.')
         file_not_found()
 def read_rss(url):

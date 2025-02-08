@@ -1,48 +1,61 @@
-from urllib.request import urlopen
-import re, os
+import os
+import re
+import requests
+
+line_skip = {'https://sukebei.nyaa.si/', 'https://nyaa.si/'}
 
 def clear_console():
     if os.name == 'nt':
         _ = os.system('cls')
     else:
         _ = os.system('clear')
-def nyaa_rss(bob):
-    url = (bob)
-    page = urlopen(url)
-    html = page.read().decode("utf-8")
-    pattern = "<.*Hash.*Hash.*>"
-    match_results = re.findall(pattern, html, re.IGNORECASE)
-    for match in match_results:
-        link = re.sub("^.*?<.*?>", "", match)
-        link = re.sub("<.*>$", '', link)
-        if (link not in codex):
-            with open("S:/OneDrive/Documents/GitHub/nyaa-rss/links.lst", "a") as links:
-                print(link, file=links)
-                print(link)
-        else:
-            print('Hash is already accounted for...')
+def nyaa_rss(url):
+    temp_list = []
+    page = requests.get(url)
+    html = page.text.splitlines()
+    for func_line in html:
+        parse_line = str(func_line)
+        func_pattern = '.*<title.*title>'
+        if re.match(func_pattern, parse_line):
+            parsed = re.sub("^.*?<.*?>", "", parse_line)
+            parsed = re.sub("<.*>$", '', parsed)
+            parsed = re.sub('&#34;', "'", parsed)
+            if parsed not in codex:
+                temp_list.append(parsed)
+        func_pattern = '.*<link.*link>'
+        if re.match(func_pattern, parse_line):
+            parsed = re.sub("^.*?<.*?>", "", parse_line)
+            parsed = re.sub("<.*>$", '', parsed)
+            parsed = re.sub('&#34;', "'", parsed)
+            if parsed not in codex:
+                temp_list.append(parsed)
+        func_pattern = '.*<.*Hash.*Hash>'
+        if re.match(func_pattern, parse_line):
+            parsed = re.sub("^.*?<.*?>", "", parse_line)
+            parsed = re.sub("<.*>$", '', parsed)
+            parsed = re.sub('&#34;', "'", parsed)
+            if parsed not in codex:
+                temp_list.append(parsed)
+    return temp_list
 
 clear_console()
 
-open("S:/OneDrive/Documents/GitHub/nyaa-rss/links.lst", "w")
+open("S:/OneDrive/Documents/GitHub/nyaa-rss/links.lst", "w", encoding='utf-8')
 
-with open('S:/OneDrive/Documents/GitHub/nyaa-rss/codex.lst', 'r') as f:
-    codex = f.read().splitlines()
+with open('S:/OneDrive/Documents/GitHub/nyaa-rss/codex.lst', 'r', encoding='utf-8') as codex_list:
+    codex = codex_list.read().splitlines()
     
-with open('S:/OneDrive/Documents/GitHub/nyaa-rss/feeds.lst', 'r') as feeds:
+with open('S:/OneDrive/Documents/GitHub/nyaa-rss/feeds.lst', 'r', encoding='utf-8') as feeds:
     feeds = feeds.read().splitlines()
-    for feed in feeds:
-        nyaa_rss(feed)
-
-with open('S:/OneDrive/Documents/GitHub/nyaa-rss/links.lst') as links:
-    if links != []:
-        with open("S:/OneDrive/Documents/GitHub/nyaa-rss/codex.lst", "a") as codex:
-            clear_console()
-            for line in links:
-                codex.write(line)
-                print(line)
-    else:
-        clear_console()
-        print('there are no new items in the provided feeds')
-
+    pattern = r'.*Torrent File RSS'
+    for uri in feeds:
+        output = nyaa_rss(uri)
+        for line in output:
+            if line not in codex:
+                if line not in line_skip:
+                    if not re.match(pattern, line):
+                        with open('S:/OneDrive/Documents/GitHub/nyaa-rss/codex.lst', 'a', encoding='utf-8') as codex_list:
+                            codex_list.write(line + '\n')
+                            print(line)
+        print('---------------------')
 input('all feeds processed...\npress enter to quit...')
