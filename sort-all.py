@@ -81,7 +81,7 @@ def move_nyaa(path):
 
 
 def remove_empty_directories(root):
-    for _ in range(9):
+    for _ in range(27):
         for dirpath, dir_names, filenames in os.walk(root):
             if not filenames and not dir_names:
                 if dirpath != root:
