@@ -1,5 +1,6 @@
 import os
 import re
+
 import requests
 
 line_skip = {'https://sukebei.nyaa.si/', 'https://nyaa.si/'}
@@ -9,6 +10,8 @@ def clear_console():
         _ = os.system('cls')
     else:
         _ = os.system('clear')
+
+
 def nyaa_rss(url):
     temp_list = []
     page = requests.get(url)
@@ -55,7 +58,7 @@ with open('S:/OneDrive/Documents/GitHub/nyaa-rss/feeds.lst', 'r', encoding='utf-
                 if line not in line_skip:
                     if not re.match(pattern, line):
                         with open('S:/OneDrive/Documents/GitHub/nyaa-rss/codex.lst', 'a', encoding='utf-8') as codex_list:
-                            codex_list.write(line + '\n')
+                            codex_list.write(f"{line}\n")
                             print(line)
-        print('---------------------')
+        print(f"---------------------")
 input('all feeds processed...\npress enter to quit...')

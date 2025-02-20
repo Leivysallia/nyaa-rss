@@ -3,11 +3,11 @@ import re
 
 asw = r"^\[ASW\].*$"
 basedir = "S:/crimson/fin"
+error_set = set([])
+full_set = set([])
 nyaa = "S:/crimson/fin/nyaa/ASW"
 run = "false"
 videos = "S:/OneDrive/Videos"
-error_set = set([])
-full_set = set([])
 
 
 def check_file():
@@ -27,9 +27,9 @@ def clear_console():
 def create_nyaa():
     try:
         os.makedirs(nyaa)
-        print("Created folder " + nyaa)
+        print(f"Created folder {nyaa}")
     except FileExistsError:
-        print(nyaa + " already exists; skipping creation")
+        print(f"{nyaa} already exists; skipping creation")
 
 
 def sort_nyaa():
@@ -53,15 +53,15 @@ def sort_nyaa():
                 old = os.path.join(basedir, fn).replace("\\", "/")
                 try:
                     os.makedirs(new_dir)
-                    print("Created folder " + dir_name + ".")
+                    print(f"Created folder {dir_name}.")
                 except FileExistsError:
                     pass
                 try:
                     os.rename(old, new)
-                    print("Moved into folder " + dir_name + "; " + new_name)
+                    print(f"Moved into folder {dir_name}; {new_name}")
                 except FileExistsError:
                     os.remove(old)
-                    print(new_name + " already exists; deleting...")
+                    print(f"{new_name} already exists; deleting...")
 
 
 def move_nyaa(path):
@@ -86,13 +86,14 @@ def remove_empty_directories(root):
             if not filenames and not dir_names:
                 if dirpath != root:
                     full_set.add(dirpath)
+                    display = dirpath.replace("\\", "/")
                     if dirpath not in error_set:
                         try:
                             os.rmdir(dirpath)
-                            print(dirpath + " empty; removing.")
+                            print(f"{display} empty; removing.")
                         except PermissionError:
                             error_set.add(dirpath)
-                            print("PermissionError; " + dirpath + " not removed!")
+                            print(f"PermissionError; {display} not removed!")
         if full_set == error_set:
             break
 
