@@ -1,12 +1,13 @@
 import os
 
-temp = 'S:/crimson/temp'
-fin = 'S:/crimson/fin'
-one_drive = 'S:/OneDrive'
-ess = 'S:/'
-
+backup_drive = 'D:/'
+dropbox = 'S:/Dropbox'
 error_set = set([])
+ess = 'S:/'
+fin = 'S:/crimson/fin'
 full_set = set([])
+one_drive = 'S:/OneDrive'
+temp = 'S:/crimson/temp'
 
 def remove_empty_directories(root):
     for _ in range(9):
@@ -17,11 +18,13 @@ def remove_empty_directories(root):
                     if dirpath not in error_set:
                         try:
                             os.rmdir(dirpath)
-                            print(dirpath + ' empty; removing.')
+                            print(f'{dirpath} empty; removing.')
                         except PermissionError:
                             error_set.add(dirpath)
-                            print('PermissionError; ' + dirpath + ' not removed!')
+                            print(f'PermissionError; {dirpath} not removed!')
         if full_set == error_set:
             break
 
+#remove_empty_directories(dropbox)
+#remove_empty_directories(one_drive)
 remove_empty_directories(fin)
