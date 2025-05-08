@@ -251,7 +251,6 @@ feeds.lst
 hash.lst
 link.lst
 links.lst
-remove_empty_directories.py
 sid.py
 test.py
 testing.py
